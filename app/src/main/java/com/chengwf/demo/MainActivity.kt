@@ -2,9 +2,9 @@ package com.chengwf.demo
 
 import com.chengwf.demo.base.BaseActivity
 import com.chengwf.demo.dialog.CustomDialogActivity
-import com.chengwf.demo.ext.launchActivity
 import com.chengwf.demo.recyclerview.SpanSizeActivity
 import com.chengwf.demo.snack_bar.TopSnackBarActivity
+import com.chengwf.demo.utils.ext.launchActivity
 import com.chengwf.demo.viewchat.MoreChatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
