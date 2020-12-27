@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_main">
+        <item>Show Chat More</item>
+        <item>Custom SnackBar</item>
+        <item>SpanSize</item>
+        <item>自定义dialog</item>
+        <item>临时的，测试扩展方法转Gson</item>
+    </string-array>
+</resources>

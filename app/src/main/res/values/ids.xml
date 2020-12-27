@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="id_show_view" type="id" />
     <item name="id_text_view" type="id" />
     <item name="id_recycler_view" type="id" />
     <item name="id_image_view" type="id" />
     <item name="id_view_pager" type="id" />
     <item name="id_tab_layout" type="id" />
+    <item name="id_floating_action" type="id" />
+    <item name="id_button" type="id" />
+    <item name="id_toolbar" type="id" />
+
+
+    <item name="id_show_view" type="id" />
     <item name="id_title_text" type="id" />
     <item name="id_title_back" type="id" />
     <item name="id_title_menu" type="id" />
     <item name="id_title_action" type="id" />
-    <item name="id_floating_action" type="id" />
-    <item name="id_button" type="id" />
-    <item name="id_guide_line_1" type="id" />
-    <item name="id_toolbar" type="id" />
-
 
     <item name="id_dialog_message" type="id" />
     <item name="id_dialog_title" type="id" />
@@ -23,4 +23,6 @@
     <item name="id_dialog_cancel" type="id" />
 
     <item name="id_layout_1" type="id" />
+
+    <item name="id_guide_line_1" type="id" />
 </resources>
