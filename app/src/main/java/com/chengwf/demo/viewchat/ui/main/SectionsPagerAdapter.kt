@@ -2,7 +2,6 @@ package com.chengwf.demo.viewchat.ui.main
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.PagerAdapter
 

@@ -6,14 +6,24 @@ import com.chengwf.demo.recyclerview.SpanSizeActivity
 import com.chengwf.demo.snack_bar.TopSnackBarActivity
 import com.chengwf.demo.utils.ext.launchActivity
 import com.chengwf.demo.viewchat.MoreChatActivity
+import com.chengwf.utils.launchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     override fun initView() {
-        bn_chat_more.setOnClickListener { launchActivity(MoreChatActivity::class.java) }
-        bn_top_snack.setOnClickListener { launchActivity(TopSnackBarActivity::class.java) }
-        bn_span_size.setOnClickListener { launchActivity(SpanSizeActivity::class.java) }
-        bn_custom_dialog.setOnClickListener { launchActivity(CustomDialogActivity::class.java) }
+
+        id_recycler_view.adapter =
+            MainMenuAdapter(resources.getStringArray(R.array.menu_main).toMutableList()).apply {
+                setOnItemClickListener { _, _, position ->
+                    when (position) {
+                        0 -> launchActivity<MoreChatActivity>()
+                        1 -> launchActivity<TopSnackBarActivity>()
+                        2 -> launchActivity<SpanSizeActivity>()
+                        3 -> launchActivity<CustomDialogActivity>()
+                    }
+                }
+            }
     }
+
     override fun getLayoutResId() = R.layout.activity_main
 }

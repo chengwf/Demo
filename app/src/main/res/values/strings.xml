@@ -3,11 +3,8 @@
     <string name="title_activity_more_chat">MoreChatActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
-    <string name="show_chat_more">Show Chat More</string>
-    <string name="custom_snackbar">Custom SnackBar</string>
-    <string name="span_size">SpanSize</string>
-    <string name="custom_dialog">自定义dialog</string>
-    <string name="custom_alert_dialog">自定义alertDialog</string>
     <string name="cancel">取消</string>
     <string name="sure">确定</string>
+
+    <string name="custom_alert_dialog">自定义alertDialog</string>
 </resources>

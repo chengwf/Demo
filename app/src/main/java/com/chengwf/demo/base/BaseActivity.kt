@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        initViewModel()
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResId())
 
@@ -14,7 +15,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     abstract fun initView()
 
-    protected fun setStatus() {}
+    protected open fun setStatus() {}
+    protected open fun initViewModel() {}
 
     abstract fun getLayoutResId(): Int
 }

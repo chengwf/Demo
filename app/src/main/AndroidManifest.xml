@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeBlue">
-        <activity android:name=".dialog.CustomDialogActivity"></activity>
+        <activity android:name=".dialog.CustomDialogActivity" />
         <activity android:name=".recyclerview.SpanSizeActivity" />
         <activity android:name=".snack_bar.TopSnackBarActivity" />
         <activity

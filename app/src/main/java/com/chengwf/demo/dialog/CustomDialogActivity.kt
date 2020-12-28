@@ -1,10 +1,10 @@
 package com.chengwf.demo.dialog
 
 import android.content.res.Resources
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.chengwf.demo.R
 import kotlinx.android.synthetic.main.activity_custom_dialog.*
 
