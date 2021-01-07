@@ -9,6 +9,7 @@ abstract class BaseActivity : AppCompatActivity() {
         initViewModel()
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResId())
+        setStatus()
 
         initView()
     }

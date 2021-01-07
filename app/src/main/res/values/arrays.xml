@@ -6,5 +6,6 @@
         <item>LayoutManager</item>
         <item>Dialog</item>
         <item>AppBarLayout</item>
+        <item>DynamicAnimation</item>
     </string-array>
 </resources>

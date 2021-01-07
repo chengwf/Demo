@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.chengwf.demo.R
+import com.chengwf.utils.launchActivity
 import kotlinx.android.synthetic.main.activity_custom_dialog.*
 
 class CustomDialogActivity : AppCompatActivity() {
@@ -14,6 +15,8 @@ class CustomDialogActivity : AppCompatActivity() {
         setContentView(R.layout.activity_custom_dialog)
         bn_dialog_alert.setOnClickListener { showCustomDialog1() }
         bn_dialog_progress.setOnClickListener { showProgressDialog1() }
+
+        bn_dialog_activity.setOnClickListener { launchActivity<LoadingActivity>() }
     }
 
     private fun showProgressDialog1() {

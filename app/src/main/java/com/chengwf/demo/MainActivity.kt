@@ -1,5 +1,7 @@
 package com.chengwf.demo
 
+import android.widget.Toast
+import com.chengwf.demo.animation.DynamicAnimationActivity
 import com.chengwf.demo.base.BaseActivity
 import com.chengwf.demo.dialog.CustomDialogActivity
 import com.chengwf.demo.recyclerview.SpanSizeActivity
@@ -19,6 +21,10 @@ class MainActivity : BaseActivity() {
                         1 -> launchActivity<TopSnackBarActivity>()
                         2 -> launchActivity<SpanSizeActivity>()
                         3 -> launchActivity<CustomDialogActivity>()
+                        4 -> {
+                            Toast.makeText(this@MainActivity, "还没做~~", Toast.LENGTH_SHORT).show()
+                        }
+                        5 -> launchActivity<DynamicAnimationActivity>()
                     }
                 }
             }

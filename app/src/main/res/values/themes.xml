@@ -26,37 +26,17 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
         <item name="android:windowTranslucentStatus">false</item>
-    </style>
 
+        <item name="buttonStyle">@style/CommonButtonStyle</item>
 
-<!--
-    <style name="AppThemeBlue" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/color_primary_blue</item>
-        &lt;!&ndash;<item name="colorPrimaryDark">@color/color_primary_blue_dark</item>&ndash;&gt;
-        <item name="colorPrimaryDark">@color/color_primary_blue</item>
-        <item name="colorAccent">@color/color_timeout_yes</item>
-        <item name="android:textColorSecondary">@color/black</item>
-        &lt;!&ndash;右边菜单图标的颜色，就是那三个竖点&ndash;&gt;
+        <!--右边菜单图标的颜色，就是那三个竖点-->
         <item name="colorControlNormal">@android:color/white</item>
-        <item name="actionMenuTextColor">@android:color/white</item> &lt;!&ndash;menu字体颜色&ndash;&gt;
-        &lt;!&ndash;<item name="buttonStyle">@style/CustomButtonStyle</item>&ndash;&gt;
+        <item name="actionMenuTextColor">@android:color/white</item>
+
         <item name="android:colorForeground">@android:color/white</item>
-    </style>
--->
 
-    <style name="CardViewStyle">
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_marginTop">30dp</item>
-        <item name="android:background">@color/color_primary_blue</item>
-        <item name="android:layout_marginBottom">10dp</item>
-    </style>
+        <item name="android:textColorSecondary">@color/black</item>
 
-    <style name="LaunchActivityTextView" parent="@style/Base.TextAppearance.AppCompat.Body2">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:textSize">17sp</item>
-        <item name="android:gravity">center</item>
     </style>
 
     <style name="Theme.Demo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
@@ -81,24 +61,5 @@
     <style name="Theme.Demo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Demo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-
-
-
-
-    <!-- 设置Toolbar标题字体的颜色大小 app:titleTextAppearance="@style/Toolbar.TitleText"-->
-<!--
-    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">20sp</item>&lt;!&ndash;toolbar标题字体大小&ndash;&gt;
-        <item name="android:textColor">#ffffff</item>&lt;!&ndash;toolbar标题字体颜色&ndash;&gt;
-    </style>
-
-    <style name="CommonButtonStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_margin">@dimen/dp10</item>
-        <item name="android:background">@color/color_primary_blue</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-    </style>
--->
 
 </resources>

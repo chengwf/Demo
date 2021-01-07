@@ -32,7 +32,7 @@ class ProgressBarDialog1(
 
         id_dialog_icon.setImageResource(icon)
 
-        if (icon == R.drawable.ic_launcher_background) {
+        if (icon == R.mipmap.ic_launcher_round) {
             val anim: Animation = AnimationUtils.loadAnimation(context, R.anim.progress_bar_1)
             anim.start()
             id_dialog_icon.startAnimation(anim)
