@@ -75,7 +75,7 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="DialogActivityStyle" parent="Theme.AppCompat.Dialog">
+    <style name="DialogActivityStyle" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowIsFloating">true</item>

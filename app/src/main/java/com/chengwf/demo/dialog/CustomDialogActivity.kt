@@ -17,6 +17,12 @@ class CustomDialogActivity : AppCompatActivity() {
         bn_dialog_progress.setOnClickListener { showProgressDialog1() }
 
         bn_dialog_activity.setOnClickListener { launchActivity<LoadingActivity>() }
+        bn_dialog_activity.setOnLongClickListener {
+            launchActivity<LoadingActivity> {
+                putExtra("cancel", true)
+            }
+            return@setOnLongClickListener false
+        }
     }
 
     private fun showProgressDialog1() {
