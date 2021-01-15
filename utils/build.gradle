@@ -55,4 +55,6 @@ dependencies {
     api rootProject.ext.network["okhttp3"]
     api rootProject.ext.network["okhttp3_logging"]
 
+    api "androidx.dynamicanimation:dynamicanimation:${rootProject.ext.version["dynamicanimation_version"]}"
+
 }

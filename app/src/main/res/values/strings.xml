@@ -7,4 +7,5 @@
     <string name="sure">确定</string>
 
     <string name="custom_alert_dialog">自定义alertDialog</string>
+    <string name="activity_dialog">Activity Dialog</string>
 </resources>

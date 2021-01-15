@@ -19,4 +19,9 @@
         style="@style/MainButtonStyle"
         android:text="@string/custom_alert_dialog" />
 
+    <Button
+        android:id="@+id/bn_dialog_activity"
+        style="@style/MainButtonStyle"
+        android:text="@string/activity_dialog" />
+
 </LinearLayout>
