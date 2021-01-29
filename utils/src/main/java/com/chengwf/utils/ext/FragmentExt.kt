@@ -1,4 +1,4 @@
-package com.chengwf.utils
+package com.chengwf.utils.ext
 
 
 import android.app.Activity
@@ -15,9 +15,21 @@ import androidx.fragment.app.Fragment
 /**
  * 下面两个跳转activity的方法，一个是结束自己一个不结束自己
  * ，省略掉this参数，kotlin写this太长了，而且有时候编译器还不提示的。。。
+ *
+ * @param block 在这里携带intent参数
  */
 inline fun <reified T> Fragment.launchActivity(block: Intent.() -> Unit = {}) {
     activity?.let { it.startActivity(Intent(it, T::class.java).apply { block() }) }
+}
+
+/***
+ * 隐式启动
+ */
+fun Fragment.launchActivity(action: String, block: Intent.() -> Unit = {}) {
+    startActivity(Intent().apply {
+        setAction(action)
+        block()
+    })
 }
 
 inline fun <reified T> Fragment.tohActivity(block: Intent.() -> Unit = {}) {

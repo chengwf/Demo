@@ -1,4 +1,4 @@
-package com.chengwf.demo.utils.callback
+package com.chengwf.utils.callback
 
 import android.text.Editable
 import android.text.TextWatcher

@@ -1,4 +1,4 @@
-package com.chengwf.utils
+package com.chengwf.utils.ext
 
 import android.app.Activity
 import android.content.Context
@@ -9,7 +9,9 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import android.view.Display
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.ColorInt
 
 /**
  * 取得虚拟导航栏高度
@@ -51,9 +53,12 @@ fun Activity.hindKeyBroad() {
 }
 
 
+
 /**
  * 下面两个跳转activity的方法，一个是结束自己一个不结束自己
  * ，省略掉this参数，kotlin写this太长了，而且有时候编译器还不提示的。。。
+ *
+ * @param block 在这里携带intent参数
  */
 inline fun <reified T> Activity.launchActivity(block: Intent.() -> Unit = {}) {
     startActivity(Intent(this, T::class.java).apply { block() })
@@ -64,6 +69,12 @@ inline fun <reified T> Activity.tohActivity(block: Intent.() -> Unit = {}) {
     finish()
 }
 
+fun Activity.launchActivity(action: String, block: Intent.() -> Unit = {}) {
+    startActivity(Intent().apply {
+        setAction(action)
+        block()
+    })
+}
 
 /**
  * 是否存在刘海屏
@@ -90,3 +101,17 @@ fun Activity.getStatusBarHeight(): Int {
 }
 
 fun Activity.log(message: String) = Log.d("TAG_${this.javaClass.simpleName}", message)
+
+fun Activity.setStatusBarColor(@ColorInt color: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = color
+    }
+}
+
+fun Activity.stringExtra(key: String) = intent.getStringExtra(key) ?: ""
+fun Activity.intExtra(key: String) = intent.getIntExtra(key, -1)
+fun Activity.longExtra(key: String) = intent.getLongExtra(key, -1)
+fun Activity.boolExtra(key: String, def: Boolean = false) = intent.getBooleanExtra(key, def)
+
