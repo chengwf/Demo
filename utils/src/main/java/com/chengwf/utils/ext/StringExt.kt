@@ -51,7 +51,8 @@ fun String?.toEmojiFlag(): String {
     }
     val upperCase = this.toUpperCase(Locale.getDefault())
     if (!Character.isLetter(upperCase[0])
-        || !Character.isLetter(upperCase[1])) {
+        || !Character.isLetter(upperCase[1])
+    ) {
         return this
     }
     return StringBuilder().apply {
@@ -64,4 +65,4 @@ fun String?.toEmojiFlag(): String {
 /**
  * 转成json，暂时就放这里
  */
-fun Any.toJson() = Gson().toJson(this)
+fun Any.toJson(): String = Gson().toJson(this)

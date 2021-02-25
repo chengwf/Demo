@@ -21,12 +21,12 @@ fun ImageView.load(@DrawableRes resId: Int) =
                 .into(this)
 
 
-fun ImageView.loadCircleImg(url: String?) =
+fun ImageView.loadCircle(url: String?) =
         Glide.with(this).load(url)
                 .apply(RequestOptions.circleCropTransform())
                 .into(this)
 
-fun ImageView.loadCircleImg(@DrawableRes resId: Int) =
+fun ImageView.loadCircle(@DrawableRes resId: Int) =
         Glide.with(this).load(resId)
                 .apply(RequestOptions.circleCropTransform())
                 .into(this)

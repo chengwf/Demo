@@ -10,6 +10,7 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.bumptech.glide.Glide
@@ -65,7 +66,6 @@ fun View.setVisible(isVisible: Boolean) = if (isVisible) {
     invisible()
 }
 
-fun EditText.string() = this.text.toString()
 
 /**
  * 全屏的情况
@@ -107,3 +107,15 @@ fun View.backgraundByGlide(url: String) {
         }
     })
 }
+/**
+ * @param isGone true隐藏，false显示，隐藏是完全隐藏，位置发生变动，被依赖的控件也会发生位移
+ */
+fun View.isGone(isGone: Boolean) = if (isGone) {
+    gone()
+} else {
+    visible()
+}
+
+fun View.isGone() = visibility == View.GONE
+
+fun View.isVisible() = visibility == View.VISIBLE
