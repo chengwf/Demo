@@ -4,11 +4,10 @@ import android.graphics.Color
 import android.text.TextUtils
 import androidx.annotation.Size
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
 import java.util.*
 
-
+@Deprecated("有点过度封装的意思", ReplaceWith("Color.parseColor(this)", "android.graphics.Color"))
 @Size(min = 4)
 fun String.toColor() = Color.parseColor(this)
 

@@ -2,10 +2,8 @@ package com.chengwf.utils.ext
 
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
-import androidx.annotation.Size
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.chengwf.utils.R
 
 /**
  * 多了个error
