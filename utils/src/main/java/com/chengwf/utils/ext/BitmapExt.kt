@@ -14,6 +14,5 @@ fun Bitmap.rotate(alpha: Float): Bitmap {
     if (newBM == this) {
         return newBM
     }
-    recycle()
     return newBM
 }
