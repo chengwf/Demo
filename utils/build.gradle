@@ -1,3 +1,8 @@
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
+//
+//apply plugin: 'com.android.library'
+//apply plugin: 'kotlin-kapt'
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
@@ -42,8 +47,13 @@ dependencies {
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    api 'com.google.android.material:material:1.2.1'
 
     api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    testApi rootProject.ext.test["junit"]
+    androidTestApi rootProject.ext.test["junit_ext"]
+    androidTestApi rootProject.ext.test["espresso"]
 
     api rootProject.ext.commonLisb
     api rootProject.ext.utils["adapter"]
@@ -54,7 +64,10 @@ dependencies {
     api rootProject.ext.network["converter_gson"]
     api rootProject.ext.network["okhttp3"]
     api rootProject.ext.network["okhttp3_logging"]
-
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     api "androidx.dynamicanimation:dynamicanimation:${rootProject.ext.version["dynamicanimation_version"]}"
 
+    api 'androidx.appcompat:appcompat:1.2.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api "com.github.the-pig-of-jungle.smart-show:all:3.0.3"
 }

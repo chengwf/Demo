@@ -1,17 +1,17 @@
-package me.redcircle.utils.base
+package com.chengwf.utils.base
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.chengwf.utils.APIException
+import com.chengwf.utils.LoadStatus
 import com.coder.zzq.smartshow.toast.SmartToast
 import com.google.gson.JsonParseException
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import me.redcircle.utils.APIException
-import me.redcircle.utils.enum.LoadStatus
 import java.lang.NullPointerException
 import java.net.ConnectException
 import java.net.SocketTimeoutException

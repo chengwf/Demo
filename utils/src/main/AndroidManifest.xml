@@ -2,4 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chengwf.utils">
 
+    <application>
+        <activity android:name=".view.TurntableActivity"></activity>
+        <activity android:name=".dialog.LoadingActivity" />
+    </application>
+
 </manifest>
