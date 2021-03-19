@@ -11,6 +11,8 @@ import android.view.animation.DecelerateInterpolator
 import com.chengwf.customview.entity.PanData
 import com.chengwf.utils.callback.AnimatorListen
 import com.chengwf.utils.ext.rotate
+import com.chengwf.utils.ext.second
+import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -18,6 +20,11 @@ import kotlin.math.sin
 /**
  * Created by chenzipeng on 2018/7/27.
  * function:
+ *
+ * 我将这个类改了下，不知道是不是我改出问题了，发现转动到指定位置的功能似乎无效，所以改写了那部分的逻辑
+ *
+ * 原作者项目的github：
+ *  @see https://github.com/SepCzp/CustomControl
  */
 class PieView : View {
 
@@ -160,11 +167,11 @@ class PieView : View {
             }
             drawIcons(canvas, mData[i].bitmap)
             angles[i] = startAngle
-            Log.d(TAG, "onDraw: " + angles[i] + "     " + i)
+//            Log.d(TAG, "onDraw: " + angles[i] + "     " + i)
             startAngle += sweepAngle
         }
         super.onDraw(canvas)
-        Log.d(TAG, "startAngle: $startAngle   sweepAngle  $sweepAngle")
+//        Log.d(TAG, "startAngle: $startAngle   sweepAngle  $sweepAngle")
     }
 
     /**
@@ -192,6 +199,8 @@ class PieView : View {
      *
      * @param canvas 1
      * @param mString 2
+     *
+     * chengwf:我的项目不需要绘制文字，这个方法没太仔细看
      */
     private fun drawTexts(canvas: Canvas, mString: String) {
         val path = Path()
@@ -242,17 +251,11 @@ class PieView : View {
 
         stateCallback(true)
         rotateA = sweepAngle * when {
-            mPosition - index > 0 -> {
-                -(mCount - index).toFloat()
-            }
+            mPosition - index > 0 -> -(mCount - index).toFloat()
 
-            mPosition - index == 0 -> {
-                index.toFloat()
-            }
+            mPosition - index == 0 -> index.toFloat()
 
-            else -> {
-                (mCount + index).toFloat()
-            }
+            else -> (mCount + index).toFloat()
         }
 
 
@@ -266,7 +269,7 @@ class PieView : View {
             "start： a == $rotateA - sweepAngle == $sweepAngle - startAngle == $startAngle - toDegree == $toDegree"
         )
         val animator = ObjectAnimator.ofFloat(this@PieView, "rotation", 0f, toDegree).apply {
-            duration = 2000
+            duration = 2L.second()
             repeatCount = 0
             interpolator = DecelerateInterpolator()
             setAutoCancel(true)
@@ -306,7 +309,7 @@ class PieView : View {
     fun reset() {
         stateCallback(true)
         val animator = ObjectAnimator.ofFloat(this@PieView, "rotation", 0f, 360F).apply {
-            duration = 100
+            duration = 1L.second()
             repeatCount = 0
             interpolator = DecelerateInterpolator()
             setAutoCancel(true)
@@ -350,21 +353,35 @@ class PieView : View {
         }
 
         stateCallback(true)
-        ObjectAnimator.ofFloat(this@PieView, "rotation", 360 - rotateA % 360, 360F).apply {
-            duration = 3000
-            repeatCount = 0
-            interpolator = DecelerateInterpolator()
-            setAutoCancel(true)
-            addListener(AnimatorListen(end = {
+        // 复位角度是可以控制方向的
 
-                stateCallback(false)
-                refresh()
-            }))
-        }.start()
+        // 复位旋转的方向
+        val targetAngle = if (abs(rotateA) % 360F > 180) {
+            0F
+        } else {
+            360F
+        }
+
+        ObjectAnimator.ofFloat(this@PieView, "rotation", 360F - rotateA % 360F, targetAngle)
+            .apply {
+                // 慢一点看的时候也明显一点
+                duration = 3L.second()
+                repeatCount = 0
+                interpolator = DecelerateInterpolator()
+                setAutoCancel(true)
+                addListener(AnimatorListen(end = {
+
+                    stateCallback(false)
+                    mPosition = 0
+                    startAngle = 270F
+                    refresh()
+                }))
+            }.start()
 
         startAngle = 0F
     }
 
+    /** running状态回调 **/
     private var stateCallback: (Boolean) -> Unit = {}
 
     fun addStateCallback(callback: (Boolean) -> Unit) {
