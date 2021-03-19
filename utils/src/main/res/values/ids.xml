@@ -26,4 +26,14 @@
     <item name="id_layout_1" type="id" />
 
     <item name="id_guide_line_1" type="id" />
+
+    <item name="id_tool_1" type="id"/>
+    <item name="id_tool_2" type="id"/>
+    <item name="id_tool_3" type="id"/>
+    <item name="id_tool_4" type="id"/>
+    <item name="id_tool_5" type="id"/>
+    <item name="id_tool_6" type="id"/>
+    <item name="id_tool_7" type="id"/>
+    <item name="id_tool_8" type="id"/>
+    <item name="id_tool_9" type="id"/>
 </resources>

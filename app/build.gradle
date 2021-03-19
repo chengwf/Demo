@@ -52,9 +52,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    sourceSets{
-        main{
-            jniLibs.srcDirs=['libs']
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
 
@@ -78,18 +78,14 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation rootProject.ext.test["junit"]
-    androidTestImplementation rootProject.ext.test["junit_ext"]
-    androidTestImplementation rootProject.ext.test["espresso"]
+
 
     implementation rootProject.ext.network["retrofit2_rx2"]
     // 配合协程用的
     implementation rootProject.ext.network["retrofit2_coroutines"]
     // 今日头条的屏幕适配方案
     implementation rootProject.ext.utils["easysnackbar"]
-
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation project(':utils')
+    implementation project(':customview')
 }

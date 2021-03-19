@@ -7,5 +7,7 @@
         <item>Dialog</item>
         <item>AppBarLayout</item>
         <item>DynamicAnimation</item>
+        <item>轮盘</item>
+        <item>DataBinding</item>
     </string-array>
 </resources>

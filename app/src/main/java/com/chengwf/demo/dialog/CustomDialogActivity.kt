@@ -6,7 +6,7 @@ import android.view.Gravity
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.chengwf.demo.R
-import com.chengwf.utils.launchActivity
+import com.chengwf.utils.ext.launchActivity
 import kotlinx.android.synthetic.main.activity_custom_dialog.*
 
 class CustomDialogActivity : AppCompatActivity() {

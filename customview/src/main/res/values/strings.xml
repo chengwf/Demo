@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CustomView</string>
+    <string name="reset">重置</string>
+    <string name="restore">复位</string>
+    <string name="remove">删除</string>
+    <string name="not_remove">不删除</string>
+</resources>

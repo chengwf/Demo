@@ -6,7 +6,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import com.chengwf.demo.R
 import com.chengwf.demo.base.BaseActivity
-import com.chengwf.utils.getStatusBarHeight
+import com.chengwf.utils.ext.getStatusBarHeight
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_dynamic_animation.*
 import kotlinx.android.synthetic.main.activity_dynamic_animation.id_layout_1

@@ -4,7 +4,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chengwf.demo.R
 import com.chengwf.demo.base.BaseActivity
-import com.chengwf.utils.getStatusBarHeight
+import com.chengwf.utils.ext.getStatusBarHeight
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_span_size.*
 
