@@ -3,6 +3,7 @@ package me.redcircle.utils.base
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.chengwf.utils.base.BaseActivity
+import com.chengwf.utils.base.BaseViewModel
 
 /**
  * 需要ViewModel的Activity基类
@@ -18,16 +19,16 @@ abstract class BaseVMActivity<VM : BaseViewModel> : BaseActivity() {
     }
 
     /**
+     * 获得初始化ViewModel的class
+     */
+    protected abstract fun getViewModelClass(): Class<VM>
+
+    /**
      * 初始化ViewModel
      */
     private fun initViewModel() {
         mViewModel = ViewModelProvider(this)[getViewModelClass()]
     }
-
-    /**
-     * 获得初始化ViewModel的class
-     */
-    protected abstract fun getViewModelClass(): Class<VM>
 
     /**
      * LiveData发生变化通知界面改变

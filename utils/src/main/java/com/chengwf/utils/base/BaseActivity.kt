@@ -24,8 +24,8 @@ abstract class BaseActivity : AppCompatActivity() {
         initViews()
     }
 
-    protected abstract fun initViews()
     protected abstract fun getLayoutId(): Int
+    protected abstract fun initViews()
     protected open fun getToolBarTitle(): String = getString(R.string.app_name)
 
 

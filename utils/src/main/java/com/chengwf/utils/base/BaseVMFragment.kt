@@ -1,11 +1,17 @@
-package me.redcircle.utils.base
+package com.chengwf.utils.base
 
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import me.redcircle.utils.base.BaseFragment
 
 abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
     protected open lateinit var mViewModel: VM
+
+    /**
+     * 获得初始化ViewModel的class
+     */
+    protected abstract fun getViewModelClass(): Class<VM>
 
     private fun initViewModel() {
         mViewModel = ViewModelProvider(this)[getViewModelClass()]
@@ -15,11 +21,6 @@ abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
         initViewModel()
         super.onViewCreated(view, savedInstanceState)
     }
-
-    /**
-     * 获得初始化ViewModel的class
-     */
-    protected abstract fun getViewModelClass(): Class<VM>
 
     /**
      * LiveData发生变化通知界面改变
