@@ -1,9 +1,7 @@
-package me.redcircle.utils.base
+package com.chengwf.utils.base
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.chengwf.utils.base.BaseActivity
-import com.chengwf.utils.base.BaseViewModel
 
 /**
  * 需要ViewModel的Activity基类

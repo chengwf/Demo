@@ -1,7 +1,6 @@
 package com.chengwf.utils.ext
 
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
@@ -9,22 +8,34 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.TextView
+import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.chengwf.utils.R
 import com.google.android.material.appbar.AppBarLayout
 
-// 设置View圆角
-fun View.setCircularCorner(color: Int = Color.WHITE, cornerRadius: Float = 20f) {
-    val gradientDrawable = GradientDrawable()
-    gradientDrawable.setColor(color)
-    gradientDrawable.cornerRadius = cornerRadius
-    background = gradientDrawable
+/**
+ * 设置View圆角
+ **/
+fun View.setCircularCorner(
+    cornerRadius: Float = 20f,
+    @ColorRes colorRes: Int = R.color.colorPrimary
+) {
+    background = GradientDrawable().apply {
+        setColor(context.getColor(colorRes))
+        shape = GradientDrawable.RECTANGLE
+        this.cornerRadius = cornerRadius
+    }
+}
+
+fun View.circle(@ColorRes colorRes: Int = R.color.colorPrimary) {
+    background = GradientDrawable().apply {
+        shape = GradientDrawable.OVAL
+        setColor(context.getColor(colorRes))
+    }
 }
 
 // 隐藏键盘
@@ -47,66 +58,17 @@ fun View.invisible() {
 }
 
 /**
- * @param isGone true隐藏，false显示，隐藏是完全隐藏，位置发生变动，被依赖的控件也会发生位移
- */
-fun View.setGone(isGone: Boolean) = if (isGone) {
-    gone()
-} else {
-    visible()
-}
-
-/**
  * view是否显示
  *
  * @param isVisible true显示，false隐藏，隐藏只是不显示，还在原来的位置上
  */
-fun View.setVisible(isVisible: Boolean) = if (isVisible) {
+fun View.isVisible(isVisible: Boolean) = if (isVisible) {
     visible()
 } else {
     invisible()
 }
 
 
-/**
- * 全屏的情况
- */
-fun AppBarLayout.topMargin() {
-    (layoutParams as AppBarLayout.LayoutParams).topMargin = getStatusBarHeight()
-}
-
-/**
- * 全屏的情况
- */
-fun Toolbar.setHeight() {
-    (this.layoutParams as CoordinatorLayout.LayoutParams).apply {
-        height += getStatusBarHeight()
-    }
-}
-
-/**
- * 状态栏的安全高度
- */
-fun getStatusBarHeight(): Int {
-    var result = 0
-    val resourceId = Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android")
-
-    if (resourceId > 0) {
-        result = Resources.getSystem().getDimensionPixelSize(resourceId)
-    }
-    return result
-}
-
-fun View.backgraundByGlide(url: String) {
-    Glide.with(context).asBitmap().load(url).into(object : CustomTarget<Bitmap>() {
-        override fun onLoadCleared(placeholder: Drawable?) {
-            // 暂时还不知道这个是干啥用的
-        }
-
-        override fun onResourceReady(bitmap: Bitmap, transition: Transition<in Bitmap>?) {
-            background = BitmapDrawable(resources, bitmap)
-        }
-    })
-}
 /**
  * @param isGone true隐藏，false显示，隐藏是完全隐藏，位置发生变动，被依赖的控件也会发生位移
  */
@@ -119,3 +81,33 @@ fun View.isGone(isGone: Boolean) = if (isGone) {
 fun View.isGone() = visibility == View.GONE
 
 fun View.isVisible() = visibility == View.VISIBLE
+
+fun View.isInvisible() = visibility == View.INVISIBLE
+
+/**
+ * 全屏时挖孔屏的适配，设置本身高度与挖孔屏的高度相加
+ */
+fun AppBarLayout.diggingScreen() {
+    (this.layoutParams as CoordinatorLayout.LayoutParams).height =
+        this.layoutParams.height + getStatusBarHeight()
+}
+
+/**
+ * 全屏时挖孔屏的适配，设置上边的间距为安全高度
+ */
+fun Toolbar.diggingScreen() {
+    (layoutParams as AppBarLayout.LayoutParams).topMargin = getStatusBarHeight()
+}
+
+
+fun View.backgraundByGlide(url: String) {
+    Glide.with(context).asBitmap().load(url).into(object : CustomTarget<Bitmap>() {
+        override fun onLoadCleared(placeholder: Drawable?) {
+            // 暂时还不知道这个是干啥用的
+        }
+
+        override fun onResourceReady(bitmap: Bitmap, transition: Transition<in Bitmap>?) {
+            background = BitmapDrawable(resources, bitmap)
+        }
+    })
+}

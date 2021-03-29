@@ -1,6 +1,7 @@
 package com.chengwf.demo
 
 import com.chengwf.customview.LotteryPanListActivity
+import com.chengwf.databindingdemo.view.DemoListActivity
 import com.chengwf.demo.animation.DynamicAnimationActivity
 import com.chengwf.demo.base.BaseActivity
 import com.chengwf.demo.dialog.CustomDialogActivity
@@ -25,6 +26,7 @@ class MainActivity : BaseActivity() {
                         4 -> SmartToast.show("还没做~~")
                         5 -> launchActivity<DynamicAnimationActivity>()
                         6 -> launchActivity<LotteryPanListActivity>()
+                        7 -> launchActivity<DemoListActivity>()
                     }
                 }
             }
