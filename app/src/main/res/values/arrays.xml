@@ -9,5 +9,7 @@
         <item>DynamicAnimation</item>
         <item>轮盘</item>
         <item>DataBinding</item>
+        <item>RecyclerView相关Demo</item>
+        <item>Design相关控件</item>
     </string-array>
 </resources>

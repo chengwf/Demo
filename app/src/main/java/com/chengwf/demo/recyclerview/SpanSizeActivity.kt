@@ -1,11 +1,9 @@
 package com.chengwf.demo.recyclerview
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chengwf.demo.R
 import com.chengwf.demo.base.BaseActivity
-import com.chengwf.utils.ext.getStatusBarHeight
-import com.google.android.material.appbar.AppBarLayout
+import com.chengwf.utils.ext.diggingScreen
 import kotlinx.android.synthetic.main.activity_span_size.*
 
 class SpanSizeActivity : BaseActivity() {
@@ -19,12 +17,9 @@ class SpanSizeActivity : BaseActivity() {
         mList.add(SpanSizeData(R.drawable.ic_launcher_background, "3"))
         mList.add(SpanSizeData(R.drawable.ic_launcher_background, "4"))
 
-        setSupportActionBar(id_toolbar)
-        (id_layout_1.layoutParams as CoordinatorLayout.LayoutParams).height =
-            id_layout_1.layoutParams.height + getStatusBarHeight()
-
-        (id_toolbar.layoutParams as AppBarLayout.LayoutParams).topMargin = getStatusBarHeight()
-
+        id_appbar_layout.diggingScreen()
+        id_toolbar.diggingScreen()
+        id_toolbar.setNavigationOnClickListener { finish() }
         id_recycler_view.adapter = mAdapter
         mAdapter.animationEnable = false
 

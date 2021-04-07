@@ -7,10 +7,10 @@ import com.chengwf.utils.ext.launchActivity
 class DesignViewListActivity : BaseDemoListActivity() {
     override fun getActivityTitle() = "DesignView相关"
 
-    override fun getAdapterList(): ArrayList<String> {
+    override fun getAdapterList(): MutableList<String> {
         val list = ArrayList<String>()
         resources.getStringArray(R.array.DesignViewList).forEach { list.add(it) }
-        return list
+        return resources.getStringArray(R.array.DesignViewList).toMutableList()
     }
 
     override fun onClickChild(position: Int) {

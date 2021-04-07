@@ -1,11 +1,10 @@
 package com.chengwf.utils.base
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chengwf.utils.adapter.BaseDemoListAdapter
 import com.chengwf.utils.R
+import com.chengwf.utils.adapter.BaseDemoListAdapter
 import com.chengwf.utils.ext.diggingScreen
 import kotlinx.android.synthetic.main.activity_base_demo_list.*
-import java.util.ArrayList
 
 abstract class BaseDemoListActivity : BaseActivity() {
 
@@ -25,7 +24,7 @@ abstract class BaseDemoListActivity : BaseActivity() {
 
     protected open fun onClickChild(position: Int) {}
 
-    abstract fun getAdapterList(): ArrayList<String>
+    abstract fun getAdapterList(): MutableList<String>
 
     abstract fun getActivityTitle(): String
 }

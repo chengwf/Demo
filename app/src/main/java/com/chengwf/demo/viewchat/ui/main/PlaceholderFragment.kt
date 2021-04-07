@@ -45,7 +45,7 @@ class PlaceholderFragment(private val layoutId:Int) : BaseFragment() {
 //                    putInt(ARG_SECTION_NUMBER, sectionNumber)
 //                }
 //            }
-            return PlaceholderFragment(arrayOf(R.layout.fragment_test_1,R.layout.fragment_test_2,R.layout.fragment_test_3)[sectionNumber])
+            return PlaceholderFragment(arrayOf(R.layout.fragment_tab_test_1,R.layout.fragment_tab_test_2,R.layout.fragment_test_3)[sectionNumber])
         }
     }
 }

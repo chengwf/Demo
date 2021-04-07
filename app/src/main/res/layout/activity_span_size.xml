@@ -7,7 +7,7 @@
     tools:context=".recyclerview.SpanSizeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@id/id_layout_1"
+        android:id="@id/id_appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
