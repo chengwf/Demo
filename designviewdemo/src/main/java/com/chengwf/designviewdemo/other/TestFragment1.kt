@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chengwf.designviewdemo.R
 import com.chengwf.utils.adapter.BaseDemoListAdapter
 import com.chengwf.utils.base.BaseFragment
+import com.chengwf.utils.ext.log
 import kotlinx.android.synthetic.main.fragment_tab_test_1.*
 import org.greenrobot.eventbus.EventBus
 
@@ -36,11 +37,12 @@ class TestFragment1 : BaseFragment() {
         id_recycler_view.adapter = BaseDemoListAdapter(buildTestData(30))
         id_recycler_view.setHasFixedSize(true)
 
-        id_recycler_view.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        id_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                EventBus.getDefault().post(TabLayoutDemoActivity.RefreshEnable(layoutManager1.findFirstVisibleItemPosition() == 0))
+                EventBus.getDefault()
+                    .post(TabLayoutDemoActivity.RefreshEnable(layoutManager1.findFirstVisibleItemPosition() == 0))
             }
         })
     }
@@ -52,5 +54,50 @@ class TestFragment1 : BaseFragment() {
             list.add("- 第 ${it + 1} 项 -")
         }
         return list
+    }
+
+    override fun onStart() {
+        super.onStart()
+        log("TAG_Debug_TestFragment -> onStart")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        log("TAG_Debug_TestFragment -> onStop")
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        log("TAG_Debug_TestFragment -> onHiddenChanged($hidden)")
+
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        log("TAG_Debug_TestFragment -> setUserVisibleHint($isVisibleToUser)")
+
+        if (!isVisibleToUser) {
+            return
+        }
+
+        id_recycler_view?.layoutManager?.let {
+
+            // 如果变成当前fragment，且列表第一项已显示出来，则可以refresh
+            val isVisibleFirst =
+                (id_recycler_view.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition() == 0
+
+            EventBus.getDefault().post(TabLayoutDemoActivity.RefreshEnable(isVisibleFirst))
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        log("TAG_Debug_TestFragment -> onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        log("TAG_Debug_TestFragment -> onPause")
     }
 }

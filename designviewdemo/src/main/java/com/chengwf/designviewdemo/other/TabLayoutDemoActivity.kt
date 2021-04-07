@@ -13,6 +13,7 @@ import com.chengwf.designviewdemo.R
 import com.chengwf.utils.adapter.CommonPageAdapter
 import com.chengwf.utils.base.BaseActivity
 import com.chengwf.utils.ext.getStatusBarHeight
+import com.chengwf.utils.ext.log
 import kotlinx.android.synthetic.main.activity_tab_layout_demo.*
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.UIUtil
@@ -52,9 +53,10 @@ class TabLayoutDemoActivity : BaseActivity() {
                 if (id_swipe_refresh.isRefreshing) {
                     return
                 }
+                log("TAG_Debug_TestFragment -> onPageScrollStateChanged($state)")
 
                 if (state == 0) {
-                    id_swipe_refresh.post { id_swipe_refresh.isEnabled = true }
+//                    id_swipe_refresh.post { id_swipe_refresh.isEnabled = true }
                 } else {
                     id_swipe_refresh.post { id_swipe_refresh.isEnabled = false }
                 }
