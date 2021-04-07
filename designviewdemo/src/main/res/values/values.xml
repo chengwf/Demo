@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="DesignViewList">
+        <item>中间某个RecyclerView不会滚动消失</item>
+    </string-array>
+
+</resources>

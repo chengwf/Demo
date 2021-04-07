@@ -1,7 +1,7 @@
 package com.chengwf.utils.base
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chengwf.utils.BaseDemoListAdapter
+import com.chengwf.utils.adapter.BaseDemoListAdapter
 import com.chengwf.utils.R
 import com.chengwf.utils.ext.diggingScreen
 import kotlinx.android.synthetic.main.activity_base_demo_list.*
@@ -18,12 +18,12 @@ abstract class BaseDemoListActivity : BaseActivity() {
         id_toolbar.title = getActivityTitle()
         id_recycler_view.layoutManager = LinearLayoutManager(this)
         id_recycler_view.adapter = BaseDemoListAdapter(getAdapterList()).apply {
-            setOnItemChildClickListener { _, _, position -> onClickChild(position) }
+            setOnItemClickListener { _, _, position -> onClickChild(position) }
         }
         id_recycler_view.setHasFixedSize(true)
     }
 
-    open fun onClickChild(position: Int) {}
+    protected open fun onClickChild(position: Int) {}
 
     abstract fun getAdapterList(): ArrayList<String>
 

@@ -15,7 +15,6 @@
             android:id="@id/id_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|snap"
             app:navigationIcon="@drawable/ic_back_white"
             app:title="List"
             app:titleTextColor="@android:color/white" />

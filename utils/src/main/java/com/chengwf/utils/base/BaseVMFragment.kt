@@ -3,7 +3,6 @@ package com.chengwf.utils.base
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import me.redcircle.utils.base.BaseFragment
 
 abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
     protected open lateinit var mViewModel: VM
