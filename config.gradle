@@ -51,9 +51,10 @@ ext {
     ]
 
     test = [
-            junit    : 'junit:junit:4.+',
-            junit_ext: 'androidx.test.ext:junit:1.1.2',
-            espresso : 'androidx.test.espresso:espresso-core:3.3.0'
+            junit             : 'junit:junit:4.+',
+            junit_ext         : 'androidx.test.ext:junit:1.1.2',
+            espresso          : 'androidx.test.espresso:espresso-core:3.3.0',
+            androidJUnitRunner: 'androidx.test.runner.AndroidJUnitRunner'
     ]
     // google的
     commonLisb = dependencies.values()
