@@ -3,10 +3,10 @@
     package="com.chengwf.databindingdemo">
 
     <application>
-        <activity android:name=".view.ListActivity"></activity>
+        <activity android:name=".view.ListActivity"/>
         <activity android:name=".view.BindFieldActivity" />
         <activity android:name=".view.DemoListActivity" />
-        <activity android:name=".view.DataBindingDemoActivity" />
+        <activity android:name=".view.DiffUtilActivity" />
     </application>
 
 </manifest>

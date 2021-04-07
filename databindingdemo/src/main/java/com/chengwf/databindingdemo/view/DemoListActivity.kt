@@ -1,27 +1,22 @@
 package com.chengwf.databindingdemo.view
 
-import android.view.View
-import com.chengwf.databindingdemo.R
-import com.chengwf.utils.base.BaseActivity
-import com.chengwf.utils.ext.diggingScreen
+import com.chengwf.utils.base.BaseDemoListActivity
 import com.chengwf.utils.ext.launchActivity
-import kotlinx.android.synthetic.main.activity_demo_list.*
 
-class DemoListActivity : BaseActivity() {
+class DemoListActivity : BaseDemoListActivity() {
 
-    override fun getLayoutId() = R.layout.activity_demo_list
 
-    override fun initViews() {
-        id_appbar_layout.diggingScreen()
-        id_toolbar.diggingScreen()
-        id_toolbar.setNavigationOnClickListener { finish() }
-    }
+    override fun getAdapterList() = arrayOf("字段，非列表", "RecyclerView", "DiffUtil").toMutableList()
 
-    fun toField(v: View) {
-        launchActivity<BindFieldActivity>()
-    }
+    override fun getActivityTitle() = "DataBinding相关"
 
-    fun toList(v: View) {
-        launchActivity<ListActivity>()
+    override fun onClickChild(position: Int) {
+        when (position) {
+            0 -> launchActivity<BindFieldActivity>()
+            1 -> launchActivity<ListActivity>()
+            2 -> launchActivity<DiffUtilActivity>()
+            else -> {
+            }
+        }
     }
 }

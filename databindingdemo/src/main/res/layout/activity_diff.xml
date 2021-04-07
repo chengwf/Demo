@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ListActivity">
-
+    tools:background="#3C3F41">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@id/id_appbar_layout"
@@ -15,10 +14,10 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@id/id_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="noScroll"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
             app:navigationIcon="@drawable/ic_back_white"
-            app:title="databinding - list"
+            app:title="DiffUtil"
             app:titleTextColor="@android:color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -31,5 +30,21 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:itemCount="6"
         tools:listitem="@layout/adapter_databinding_list" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_1"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_playlist_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_2"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_replay_5_" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
