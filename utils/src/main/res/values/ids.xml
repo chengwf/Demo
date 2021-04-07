@@ -10,6 +10,7 @@
     <item name="id_toolbar" type="id" />
     <item name="id_appbar_layout" type="id" />
     <item name="id_edit_text" type="id"/>
+    <item name="id_nested_scroll" type="id"/>
 
 
     <item name="id_show_view" type="id" />

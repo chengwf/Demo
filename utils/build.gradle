@@ -20,9 +20,8 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
-//        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
