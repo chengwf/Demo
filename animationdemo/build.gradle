@@ -11,7 +11,8 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
-        testInstrumentationRunner rootProject.ext.test["androidJUnitRunner"]
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -21,19 +22,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':utils')
     testImplementation rootProject.ext.test["junit"]
     androidTestImplementation rootProject.ext.test["junit_ext"]
     androidTestImplementation rootProject.ext.test["espresso"]
+
 }

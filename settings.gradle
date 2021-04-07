@@ -1,3 +1,3 @@
-include ':utils', ':customview', ':databindingdemo', ':recyclerviewdemo', ':designviewdemo'
+include ':utils', ':customview', ':databindingdemo', ':recyclerviewdemo', ':designviewdemo', ':animationdemo'
 include ':app'
 rootProject.name = "Demo"

@@ -86,9 +86,24 @@ dependencies {
     // 今日头条的屏幕适配方案
     implementation rootProject.ext.utils["easysnackbar"]
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    // 工具
     implementation project(':utils')
+
+    // 自定义View
     implementation project(':customview')
+
+    // dataBinding相关
     implementation project(':databindingdemo')
+
+    // RecyclerView相关
     implementation project(':recyclerviewdemo')
+
+    // design相关View
     implementation project(':designviewdemo')
+
+    // 动画相关
+    implementation project(':animationdemo')
+    testImplementation rootProject.ext.test["junit"]
+    androidTestImplementation rootProject.ext.test["junit_ext"]
+    androidTestImplementation rootProject.ext.test["espresso"]
 }
