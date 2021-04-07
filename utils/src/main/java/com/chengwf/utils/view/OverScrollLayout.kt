@@ -17,6 +17,9 @@ class OverScrollLayout : LinearLayout {
 
     companion object {
         private const val ANIM_TIME: Long = 400
+
+        /**  阻尼系数 **/
+        private const val DAMPING_COEFFICIENT = 0.3f
     }
 
     private val mOriginal = Rect()
@@ -24,9 +27,6 @@ class OverScrollLayout : LinearLayout {
     private var isMoved = false
 
     private var mStartYpos: Float = 0F
-
-    /**  阻尼系数 **/
-    private val DAMPING_COEFFICIENT = 0.3f
 
     private var isSuccess = false
 
@@ -125,8 +125,8 @@ class OverScrollLayout : LinearLayout {
     private fun recoverLayout() {
         val anim = TranslateAnimation(0f, 0f, (mChildView.top - mOriginal.top).toFloat(), 0f)
         anim.duration = ANIM_TIME
-        mChildView.startAnimation(anim);
-        mChildView.layout(mOriginal.left, mOriginal.top, mOriginal.right, mOriginal.bottom);
+        mChildView.startAnimation(anim)
+        mChildView.layout(mOriginal.left, mOriginal.top, mOriginal.right, mOriginal.bottom)
         isMoved = false
     }
 
@@ -138,7 +138,7 @@ class OverScrollLayout : LinearLayout {
      */
     private fun canPullDown(): Boolean {
         val firstVisiblePosition =
-            (mChildView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition();
+            (mChildView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
         if (firstVisiblePosition != 0 && mChildView.adapter?.itemCount != 0) {
             return false
         }
@@ -162,7 +162,7 @@ class OverScrollLayout : LinearLayout {
             (mChildView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
         if (lastVisiblePosition >= lastItemPosition) {
             val childIndex =
-                lastVisiblePosition - (mChildView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition();
+                lastVisiblePosition - (mChildView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
             val childCount = mChildView.childCount
             val index = childIndex.coerceAtMost(childCount - 1)
             val lastVisibleChild = mChildView.getChildAt(index)
