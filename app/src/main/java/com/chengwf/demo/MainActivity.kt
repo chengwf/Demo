@@ -2,7 +2,7 @@ package com.chengwf.demo
 
 import com.chengwf.customview.LotteryPanListActivity
 import com.chengwf.databindingdemo.view.DemoListActivity
-import com.chengwf.demo.animation.DynamicAnimationActivity
+import com.chengwf.animationdemo.DynamicAnimationActivity
 import com.chengwf.demo.dialog.CustomDialogActivity
 import com.chengwf.demo.recyclerview.SpanSizeActivity
 import com.chengwf.demo.snack_bar.TopSnackBarActivity
