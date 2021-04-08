@@ -8,9 +8,7 @@ class LotteryPanListActivity : BaseDemoListActivity() {
     override fun onClickChild(position: Int) {
         when (position) {
             0 -> launchActivity<TurntableActivity>()
-            2 -> launchActivity<PieViewActivity>()
-            else -> {
-            }
+            1 -> launchActivity<PieViewActivity>()
         }
     }
 

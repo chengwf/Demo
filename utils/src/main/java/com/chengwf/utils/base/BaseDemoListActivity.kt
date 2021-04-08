@@ -1,9 +1,11 @@
 package com.chengwf.utils.base
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.chengwf.utils.R
 import com.chengwf.utils.adapter.BaseDemoListAdapter
 import com.chengwf.utils.ext.diggingScreen
+import com.chengwf.utils.view.CommonListDecoration
 import kotlinx.android.synthetic.main.activity_base_demo_list.*
 
 abstract class BaseDemoListActivity : BaseActivity() {
@@ -19,6 +21,7 @@ abstract class BaseDemoListActivity : BaseActivity() {
         id_recycler_view.adapter = BaseDemoListAdapter(getAdapterList()).apply {
             setOnItemClickListener { _, _, position -> onClickChild(position) }
         }
+        id_recycler_view.addItemDecoration(CommonListDecoration())
         id_recycler_view.setHasFixedSize(true)
     }
 

@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">AnimationDemo</string>
+
+    <string-array name="animator_demo_list">
+        <item>DynamicAnimation</item>
+        <item>贝塞尔曲线Demo</item>
+    </string-array>
 </resources>

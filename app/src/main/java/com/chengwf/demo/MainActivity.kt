@@ -2,7 +2,7 @@ package com.chengwf.demo
 
 import com.chengwf.customview.LotteryPanListActivity
 import com.chengwf.databindingdemo.view.DemoListActivity
-import com.chengwf.animationdemo.DynamicAnimationActivity
+import com.chengwf.animationdemo.AnimatorDemoListActivity
 import com.chengwf.demo.dialog.CustomDialogActivity
 import com.chengwf.demo.recyclerview.SpanSizeActivity
 import com.chengwf.demo.snack_bar.TopSnackBarActivity
@@ -24,12 +24,11 @@ class MainActivity : BaseDemoListActivity() {
             1 -> launchActivity<TopSnackBarActivity>()
             2 -> launchActivity<SpanSizeActivity>()
             3 -> launchActivity<CustomDialogActivity>()
-            4 -> SmartToast.show("还没做~~")
-            5 -> launchActivity<DynamicAnimationActivity>()
-            6 -> launchActivity<LotteryPanListActivity>()
-            7 -> launchActivity<DemoListActivity>()
-            8 -> launchActivity<com.chengwf.recyclerviewdemo.DemoListActivity>()
-            9 -> launchActivity<DesignViewListActivity>()
+            4 -> launchActivity<AnimatorDemoListActivity>()
+            5 -> launchActivity<LotteryPanListActivity>()
+            6 -> launchActivity<DemoListActivity>()
+            7 -> launchActivity<com.chengwf.recyclerviewdemo.DemoListActivity>()
+            8 -> launchActivity<DesignViewListActivity>()
         }
     }
 }

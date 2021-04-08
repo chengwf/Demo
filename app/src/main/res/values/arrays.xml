@@ -5,8 +5,7 @@
         <item>SnackBar</item>
         <item>LayoutManager</item>
         <item>Dialog</item>
-        <item>AppBarLayout</item>
-        <item>DynamicAnimation</item>
+        <item>Animation相关</item>
         <item>轮盘</item>
         <item>DataBinding</item>
         <item>RecyclerView相关Demo</item>
