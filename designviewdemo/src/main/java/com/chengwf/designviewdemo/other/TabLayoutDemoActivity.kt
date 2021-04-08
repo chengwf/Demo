@@ -10,8 +10,10 @@ import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.chengwf.designviewdemo.R
+import com.chengwf.utils.BaseEvent
 import com.chengwf.utils.adapter.CommonPageAdapter
 import com.chengwf.utils.base.BaseActivity
+import com.chengwf.utils.callback.ViewPageChangeListener
 import com.chengwf.utils.ext.getStatusBarHeight
 import com.chengwf.utils.ext.log
 import kotlinx.android.synthetic.main.activity_tab_layout_demo.*
@@ -44,38 +46,22 @@ class TabLayoutDemoActivity : BaseActivity() {
             supportFragmentManager,
             FragmentPagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT
         )
-        adapter.addFragment(TestFragment1())
+        adapter.addFragment(TestFragment1.instant)
         adapter.addFragment(TestFragment2())
         id_view_pager.adapter = adapter
-        id_view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
 
-                if (id_swipe_refresh.isRefreshing) {
-                    return
+        id_view_pager.addOnPageChangeListener(ViewPageChangeListener {
+            onSelected = { position ->
+                if (position == 0) {
+                    setupRefreshEnable(TestFragment1.instant.isRefresh())
                 }
-                log("TAG_Debug_TestFragment -> onPageScrollStateChanged($state)")
-
-                if (state == 0) {
-//                    id_swipe_refresh.post { id_swipe_refresh.isEnabled = true }
-                } else {
-                    id_swipe_refresh.post { id_swipe_refresh.isEnabled = false }
-                }
-            }
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
-
-            override fun onPageSelected(position: Int) {
             }
         })
+
         initMagicIndicator()
 
         id_swipe_refresh.setOnRefreshListener {
-            id_swipe_refresh.postDelayed(3000) { id_swipe_refresh.isRefreshing = false }
+            id_swipe_refresh.postDelayed(2000) { id_swipe_refresh.isRefreshing = false }
         }
     }
 
@@ -115,16 +101,12 @@ class TabLayoutDemoActivity : BaseActivity() {
         ViewPagerHelper.bind(id_tab_layout, id_view_pager)
     }
 
-    data class RefreshEnable(val isRefreshEnable: Boolean = false)
+    data class RefreshEnable(val isRefreshEnable: Boolean = false) : BaseEvent()
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun refreshEnableEvent(event: RefreshEnable) {
 
-        if (id_swipe_refresh.isRefreshing) {
-            return
-        }
-
-        id_swipe_refresh.isEnabled = event.isRefreshEnable
+        setupRefreshEnable(event.isRefreshEnable)
     }
 
     override fun onStop() {
@@ -132,5 +114,14 @@ class TabLayoutDemoActivity : BaseActivity() {
         if (isFinishing) {
             EventBus.getDefault().unregister(this)
         }
+    }
+
+    private fun setupRefreshEnable(isEnableRefresh: Boolean) {
+
+        if (id_swipe_refresh.isRefreshing) {
+            return
+        }
+
+        id_swipe_refresh.isEnabled = isEnableRefresh
     }
 }

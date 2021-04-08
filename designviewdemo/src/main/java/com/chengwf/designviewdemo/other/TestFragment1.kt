@@ -1,5 +1,6 @@
 package com.chengwf.designviewdemo.other
 
+import android.graphics.Rect
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,18 @@ import org.greenrobot.eventbus.EventBus
 class TestFragment1 : BaseFragment() {
     override fun getLayoutId() =
         R.layout.fragment_tab_test_1
+
+    companion object {
+        val instant by lazy { TestFragment1() }
+    }
+
+    /**
+     * 是否启用下拉刷新
+     */
+    fun isRefresh(): Boolean {
+        return (id_recycler_view.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition() == 0
+                && recycler_view_3.getLocalVisibleRect(Rect())
+    }
 
     override fun initView() {
 //        id_button.setOnClickListener { SmartToast.show("fragment 1") }
@@ -41,8 +54,10 @@ class TestFragment1 : BaseFragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                EventBus.getDefault()
-                    .post(TabLayoutDemoActivity.RefreshEnable(layoutManager1.findFirstVisibleItemPosition() == 0))
+                TabLayoutDemoActivity.RefreshEnable(
+                    layoutManager1.findFirstVisibleItemPosition() == 0
+                            && recycler_view_3.getLocalVisibleRect(Rect())
+                ).post()
             }
         })
     }
@@ -77,6 +92,7 @@ class TestFragment1 : BaseFragment() {
         log("TAG_Debug_TestFragment -> setUserVisibleHint($isVisibleToUser)")
 
         if (!isVisibleToUser) {
+            TabLayoutDemoActivity.RefreshEnable(true).post()
             return
         }
 
@@ -86,7 +102,7 @@ class TestFragment1 : BaseFragment() {
             val isVisibleFirst =
                 (id_recycler_view.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition() == 0
 
-            EventBus.getDefault().post(TabLayoutDemoActivity.RefreshEnable(isVisibleFirst))
+            TabLayoutDemoActivity.RefreshEnable(isVisibleFirst).post()
         }
 
     }
