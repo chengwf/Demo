@@ -9,7 +9,11 @@ import android.graphics.Point
 import android.os.Build
 import android.util.Log
 import android.view.Display
+import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.fragment.app.Fragment
 
 /**
@@ -18,8 +22,21 @@ import androidx.fragment.app.Fragment
  *
  * @param block 在这里携带intent参数
  */
-inline fun <reified T> Fragment.launchActivity(block: Intent.() -> Unit = {}) {
+inline fun <reified T : Activity> Fragment.launchActivity(block: Intent.() -> Unit = {}) {
     activity?.let { it.startActivity(Intent(it, T::class.java).apply { block() }) }
+}
+
+inline fun <reified T : Activity> Fragment.launchActivity2(vararg sharedElements: Pair<View, String>) {
+    activity?.let {
+
+        ActivityCompat.startActivity(
+            it,
+            Intent(it, T::class.java),
+            ActivityOptionsCompat.makeSceneTransitionAnimation(it, *sharedElements).toBundle()
+        )
+
+        it.startActivity(Intent(it, T::class.java))
+    }
 }
 
 /***
@@ -32,7 +49,7 @@ fun Fragment.launchActivity(action: String, block: Intent.() -> Unit = {}) {
     })
 }
 
-inline fun <reified T> Fragment.tohActivity(block: Intent.() -> Unit = {}) {
+inline fun <reified T : Activity> Fragment.tohActivity(block: Intent.() -> Unit = {}) {
     activity?.let {
         it.startActivity(Intent(it, T::class.java).apply { block() })
         it.onBackPressed()

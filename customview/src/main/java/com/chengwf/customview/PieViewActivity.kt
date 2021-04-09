@@ -3,15 +3,16 @@ package com.chengwf.customview
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.view.View
-import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.view.ViewCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.chengwf.customview.entity.PanData
+import com.chengwf.utils.Const
 import com.chengwf.utils.base.BaseActivity
-import com.chengwf.utils.ext.getStatusBarHeight
+import com.chengwf.utils.ext.diggingScreen
 import com.coder.zzq.smartshow.toast.SmartToast
-import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_pan_pieview.*
 
 class PieViewActivity : BaseActivity() {
@@ -19,15 +20,14 @@ class PieViewActivity : BaseActivity() {
 
     private var isRunning = false
     override fun initViews() {
-        (id_appbar_layout.layoutParams as CoordinatorLayout.LayoutParams).height =
-            id_appbar_layout.layoutParams.height + getStatusBarHeight()
-
-        (id_toolbar.layoutParams as AppBarLayout.LayoutParams).topMargin = getStatusBarHeight()
+        id_appbar_layout.diggingScreen()
+        id_toolbar.diggingScreen()
+        ViewCompat.setTransitionName(id_toolbar, Const.TRANSITION_NAME_TITLE)
         urlList.forEach { urlToBitmap(it) }
 
         view_pan_pie_view.addStateCallback { isRunning = it }
 
-        id_toolbar.setNavigationOnClickListener { finish() }
+        id_toolbar.setNavigationOnClickListener { ActivityCompat.finishAfterTransition(this) }
 
         tbn_is_remove.setOnCheckedChangeListener { _, isChecked ->
             view_pan_pie_view.setRemoveState(isChecked)

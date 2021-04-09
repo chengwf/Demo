@@ -1,6 +1,7 @@
 package com.chengwf.databindingdemo.view
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.view.ViewCompat
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,10 +9,9 @@ import com.chengwf.databindingdemo.DemoAdapter
 import com.chengwf.databindingdemo.R
 import com.chengwf.databindingdemo.entity.TestItemBean
 import com.chengwf.databindingdemo.viewmodel.ListVM
+import com.chengwf.utils.Const
 import com.chengwf.utils.base.BaseVMActivity
 import com.chengwf.utils.ext.diggingScreen
-import com.chengwf.utils.ext.getStatusBarHeight
-import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_list.*
 
 class ListActivity : BaseVMActivity<ListVM>() {
@@ -26,7 +26,7 @@ class ListActivity : BaseVMActivity<ListVM>() {
     }
 
     override fun initViews() {
-
+        ViewCompat.setTransitionName(id_toolbar, Const.TRANSITION_NAME_TITLE)
         id_appbar_layout.diggingScreen()
         id_toolbar.diggingScreen()
 
@@ -47,7 +47,7 @@ class ListActivity : BaseVMActivity<ListVM>() {
         }
 
 
-        id_toolbar.setNavigationOnClickListener { finish() }
+        id_toolbar.setNavigationOnClickListener { ActivityCompat.finishAfterTransition(this) }
         id_toolbar.title = "databinding - 列表绑定"
     }
 }

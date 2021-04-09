@@ -1,8 +1,11 @@
 package com.chengwf.demo.recyclerview
 
+import androidx.core.app.ActivityCompat
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chengwf.demo.R
 import com.chengwf.demo.base.BaseActivity
+import com.chengwf.utils.Const
 import com.chengwf.utils.ext.diggingScreen
 import kotlinx.android.synthetic.main.activity_span_size.*
 
@@ -19,7 +22,8 @@ class SpanSizeActivity : BaseActivity() {
 
         id_appbar_layout.diggingScreen()
         id_toolbar.diggingScreen()
-        id_toolbar.setNavigationOnClickListener { finish() }
+        ViewCompat.setTransitionName(id_toolbar, Const.TRANSITION_NAME_TITLE)
+        id_toolbar.setNavigationOnClickListener { ActivityCompat.finishAfterTransition(this) }
         id_recycler_view.adapter = mAdapter
         mAdapter.animationEnable = false
 

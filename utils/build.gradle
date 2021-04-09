@@ -76,4 +76,6 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.0.4'
     api "com.github.the-pig-of-jungle.smart-show:all:3.0.3"
     api "com.github.hackware1993:MagicIndicator:1.6.0"
+
+//    api "org.jetbrains.anko:anko-sdk15:0.9"
 }

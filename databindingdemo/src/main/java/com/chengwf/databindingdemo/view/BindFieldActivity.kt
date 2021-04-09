@@ -1,11 +1,14 @@
 package com.chengwf.databindingdemo.view
 
+import androidx.core.app.ActivityCompat
+import androidx.core.view.ViewCompat
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import com.chengwf.databindingdemo.R
 import com.chengwf.databindingdemo.databinding.ActivityBindFieldBinding
 import com.chengwf.databindingdemo.entity.ObservableFieldBean
 import com.chengwf.databindingdemo.viewmodel.DBDemoVM
+import com.chengwf.utils.Const
 import com.chengwf.utils.base.BaseMVVMActivity
 import com.chengwf.utils.ext.circle
 import com.chengwf.utils.ext.diggingScreen
@@ -26,10 +29,10 @@ class BindFieldActivity : BaseMVVMActivity<DBDemoVM, ActivityBindFieldBinding>()
     override fun created() {
         mBinding.data = mData
 
-        id_toolbar.setNavigationOnClickListener { finish() }
+        id_toolbar.setNavigationOnClickListener { ActivityCompat.finishAfterTransition(this) }
         id_toolbar.diggingScreen()
         id_appbar_layout.diggingScreen()
-
+        ViewCompat.setTransitionName(id_toolbar, Const.TRANSITION_NAME_TITLE)
         id_tool_1.setOnClickListener {
             mData.index.set(mData.index.get() + 1)
             mData.name.set(mData.index.get().toString())

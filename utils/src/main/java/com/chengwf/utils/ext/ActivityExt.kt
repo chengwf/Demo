@@ -9,9 +9,13 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import android.view.Display
+import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorInt
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 
 /**
  * 取得虚拟导航栏高度
@@ -53,19 +57,41 @@ fun Activity.hindKeyBroad() {
 }
 
 
-
 /**
  * 下面两个跳转activity的方法，一个是结束自己一个不结束自己
  * ，省略掉this参数，kotlin写this太长了，而且有时候编译器还不提示的。。。
  *
  * @param block 在这里携带intent参数
  */
-inline fun <reified T> Activity.launchActivity(block: Intent.() -> Unit = {}) {
+inline fun <reified T : Activity> Activity.launchActivity(block: Intent.() -> Unit = {}) {
     startActivity(Intent(this, T::class.java).apply { block() })
 }
 
-inline fun <reified T> Activity.tohActivity(block: Intent.() -> Unit = {}) {
+inline fun <reified T : Activity> Activity.launchActivity2(vararg sharedElements: Pair<View, String>) {
+    ActivityCompat.startActivity(
+        this,
+        Intent(this, T::class.java),
+        ActivityOptionsCompat.makeSceneTransitionAnimation(this, *sharedElements).toBundle()
+    )
+}
+
+inline fun <reified T : Activity> Activity.launchActivity(vararg sharedElements: Pair<View, String>) {
+
+}
+
+inline fun <reified T : Activity> Activity.tohActivity(block: Intent.() -> Unit = {}) {
     startActivity(Intent(this, T::class.java).apply { block() })
+    finish()
+}
+
+inline fun <reified T : Activity> Activity.tohActivity2(vararg sharedElements: Pair<View, String>) {
+
+    ActivityCompat.startActivity(
+        this,
+        Intent(this, T::class.java),
+        ActivityOptionsCompat.makeSceneTransitionAnimation(this, *sharedElements).toBundle()
+    )
+
     finish()
 }
 

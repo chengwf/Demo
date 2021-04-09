@@ -1,8 +1,11 @@
 package com.chengwf.designviewdemo
 
+import android.view.View
+import androidx.core.util.Pair
 import com.chengwf.designviewdemo.other.TabLayoutDemoActivity
+import com.chengwf.utils.Const
 import com.chengwf.utils.base.BaseDemoListActivity
-import com.chengwf.utils.ext.launchActivity
+import com.chengwf.utils.ext.launchActivity2
 
 class DesignViewListActivity : BaseDemoListActivity() {
     override fun getActivityTitle() = "DesignView相关"
@@ -13,7 +16,11 @@ class DesignViewListActivity : BaseDemoListActivity() {
         return resources.getStringArray(R.array.DesignViewList).toMutableList()
     }
 
-    override fun onClickChild(position: Int) {
-        launchActivity<TabLayoutDemoActivity>()
+    override fun onClickChild(position: Int, view: View, item: String) {
+        val pair: Pair<View, String> = Pair(
+            view.findViewById(R.id.id_text_view),
+            Const.TRANSITION_NAME_TITLE
+        )
+        launchActivity2<TabLayoutDemoActivity>(pair)
     }
 }

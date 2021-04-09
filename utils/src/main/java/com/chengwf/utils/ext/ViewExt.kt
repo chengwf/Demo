@@ -2,13 +2,13 @@ package com.chengwf.utils.ext
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
+import androidx.annotation.IdRes
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.bumptech.glide.Glide
@@ -111,3 +111,5 @@ fun View.backgraundByGlide(url: String) {
         }
     })
 }
+
+inline fun <reified V:View> View.find(@IdRes id:Int) = findViewById<V>(id)

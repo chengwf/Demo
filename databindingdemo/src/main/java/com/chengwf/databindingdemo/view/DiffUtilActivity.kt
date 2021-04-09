@@ -1,11 +1,13 @@
 package com.chengwf.databindingdemo.view
 
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chengwf.databindingdemo.MyDiffUtil
 import com.chengwf.databindingdemo.R
 import com.chengwf.databindingdemo.viewmodel.DiffUtilVM
+import com.chengwf.utils.Const
 import com.chengwf.utils.adapter.BaseDemoListAdapter
 import com.chengwf.utils.base.BaseVMActivity
 import com.chengwf.utils.ext.diggingScreen
@@ -22,7 +24,7 @@ class DiffUtilActivity : BaseVMActivity<DiffUtilVM>() {
 
         id_appbar_layout.diggingScreen()
         id_toolbar.diggingScreen()
-
+        ViewCompat.setTransitionName(id_toolbar, Const.TRANSITION_NAME_TITLE)
         id_recycler_view.layoutManager = LinearLayoutManager(this)
         id_recycler_view.setHasFixedSize(true)
         id_recycler_view.adapter = mAdapter
