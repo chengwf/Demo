@@ -1,14 +1,15 @@
 package com.chengwf.utils.ext
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Bitmap
+import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
-import androidx.annotation.IdRes
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.bumptech.glide.Glide
@@ -100,7 +101,7 @@ fun Toolbar.diggingScreen() {
 }
 
 
-fun View.backgraundByGlide(url: String) {
+fun View.backgroundByGlide(url: String) {
     Glide.with(context).asBitmap().load(url).into(object : CustomTarget<Bitmap>() {
         override fun onLoadCleared(placeholder: Drawable?) {
             // 暂时还不知道这个是干啥用的
@@ -112,4 +113,14 @@ fun View.backgraundByGlide(url: String) {
     })
 }
 
-inline fun <reified V:View> View.find(@IdRes id:Int) = findViewById<V>(id)
+/**
+ * 检测view是否可见（是否被滚动到屏幕外）
+ */
+fun View.checkVisible(): Boolean {
+
+    val rect = Rect(0, 0, Resources.getSystem().displayMetrics.widthPixels, measuredHeight)
+
+    getLocationInWindow(IntArray(2))
+
+    return getLocalVisibleRect(rect)
+}

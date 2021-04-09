@@ -26,7 +26,7 @@ inline fun <reified T : Activity> Fragment.launchActivity(block: Intent.() -> Un
     activity?.let { it.startActivity(Intent(it, T::class.java).apply { block() }) }
 }
 
-inline fun <reified T : Activity> Fragment.launchActivity2(vararg sharedElements: Pair<View, String>) {
+inline fun <reified T : Activity> Fragment.launchActivity(vararg sharedElements: Pair<View, String>) {
     activity?.let {
 
         ActivityCompat.startActivity(

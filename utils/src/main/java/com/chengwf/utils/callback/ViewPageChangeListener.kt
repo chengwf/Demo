@@ -4,11 +4,11 @@ import androidx.viewpager.widget.ViewPager
 
 class ViewPageChangeListener(
 
-//    private val onSelected: (position: Int) -> Unit = {},
-//    private val onScrolled: (position: Int, offset: Float, offsetPixels: Int) -> Unit = { _, _, _ -> },
-//    private val onStateChanged: (state: Int) -> Unit = {}
+    private val onSelected: (position: Int) -> Unit = {},
+    private val onScrolled: (position: Int, offset: Float, offsetPixels: Int) -> Unit = { _, _, _ -> },
+    private val onStateChanged: (state: Int) -> Unit = {}
 
-    private val func: ViewPageChangeListener.() -> Unit = {}
+//    private val func: ViewPageChangeListener.() -> Unit = {}
 
 ) : ViewPager.OnPageChangeListener {
 
@@ -24,7 +24,12 @@ class ViewPageChangeListener(
         onSelected(position)
     }
 
-    var onSelected: (position: Int) -> Unit = {}
-    var onScrolled: (position: Int, offset: Float, offsetPixels: Int) -> Unit = { _, _, _ -> }
-    var onStateChanged: (state: Int) -> Unit = {}
+//    private var onSelected: (position: Int) -> Unit = {}
+//    private var onScrolled: (position: Int, offset: Float, offsetPixels: Int) -> Unit =
+//        { _, _, _ -> }
+//    private var onStateChanged: (state: Int) -> Unit = {}
+//
+//    fun onSelected(selected: (position: Int) -> Unit) {
+//        onSelected = selected
+//    }
 }

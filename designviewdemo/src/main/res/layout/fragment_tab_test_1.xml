@@ -10,25 +10,34 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@id/id_appbar_layout"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_3"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#f44336"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:spanCount="3"
-            tools:itemCount="6"
-            tools:listitem="@layout/adapter_head_country" />
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f44336"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="1"
+                tools:itemCount="6"
+                tools:listitem="@layout/adapter_head_country" />
+
+            <include layout="@layout/layout_foot" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_head"
             android:layout_width="match_parent"
-            android:background="#03A9F4"
             android:layout_height="wrap_content"
+            android:background="#03A9F4"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
             tools:itemCount="6"

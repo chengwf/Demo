@@ -5,7 +5,7 @@ import androidx.core.util.Pair
 import com.chengwf.designviewdemo.other.TabLayoutDemoActivity
 import com.chengwf.utils.Const
 import com.chengwf.utils.base.BaseDemoListActivity
-import com.chengwf.utils.ext.launchActivity2
+import com.chengwf.utils.ext.launchActivity
 
 class DesignViewListActivity : BaseDemoListActivity() {
     override fun getActivityTitle() = "DesignView相关"
@@ -21,6 +21,6 @@ class DesignViewListActivity : BaseDemoListActivity() {
             view.findViewById(R.id.id_text_view),
             Const.TRANSITION_NAME_TITLE
         )
-        launchActivity2<TabLayoutDemoActivity>(pair)
+        launchActivity<TabLayoutDemoActivity>()
     }
 }

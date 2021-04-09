@@ -8,14 +8,12 @@ import android.widget.LinearLayout
 import androidx.core.view.postDelayed
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.chengwf.designviewdemo.R
 import com.chengwf.utils.BaseEvent
 import com.chengwf.utils.adapter.CommonPageAdapter
 import com.chengwf.utils.base.BaseActivity
 import com.chengwf.utils.callback.ViewPageChangeListener
 import com.chengwf.utils.ext.getStatusBarHeight
-import com.chengwf.utils.ext.log
 import kotlinx.android.synthetic.main.activity_tab_layout_demo.*
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.UIUtil
@@ -50,18 +48,25 @@ class TabLayoutDemoActivity : BaseActivity() {
         adapter.addFragment(TestFragment2())
         id_view_pager.adapter = adapter
 
-        id_view_pager.addOnPageChangeListener(ViewPageChangeListener {
-            onSelected = { position ->
-                if (position == 0) {
-                    setupRefreshEnable(TestFragment1.instant.isRefresh())
-                }
+        id_view_pager.addOnPageChangeListener(ViewPageChangeListener(onSelected = { position ->
+            if (position == 0) {
+                setupRefreshEnable(TestFragment1.instant.isRefresh())
+            } else {
+                setupRefreshEnable(true)
             }
-        })
+        }))
 
         initMagicIndicator()
 
         id_swipe_refresh.setOnRefreshListener {
-            id_swipe_refresh.postDelayed(2000) { id_swipe_refresh.isRefreshing = false }
+            id_swipe_refresh.postDelayed(2000) {
+                id_swipe_refresh.isRefreshing = false
+
+                // 刷新完成后，若是当前fragment是fragment1,则判断是否允许刷新
+                if (id_view_pager.currentItem == 0) {
+                    setupRefreshEnable(TestFragment1.instant.isRefresh())
+                }
+            }
         }
     }
 
@@ -105,8 +110,9 @@ class TabLayoutDemoActivity : BaseActivity() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun refreshEnableEvent(event: RefreshEnable) {
-
-        setupRefreshEnable(event.isRefreshEnable)
+        if (id_view_pager.currentItem == 0) {
+            setupRefreshEnable(event.isRefreshEnable)
+        }
     }
 
     override fun onStop() {

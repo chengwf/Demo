@@ -67,7 +67,10 @@ inline fun <reified T : Activity> Activity.launchActivity(block: Intent.() -> Un
     startActivity(Intent(this, T::class.java).apply { block() })
 }
 
-inline fun <reified T : Activity> Activity.launchActivity2(vararg sharedElements: Pair<View, String>) {
+/**
+ * 带着过度动画启动
+ */
+inline fun <reified T : Activity> Activity.launchActivity(vararg sharedElements: Pair<View, String>) {
     ActivityCompat.startActivity(
         this,
         Intent(this, T::class.java),
@@ -75,16 +78,12 @@ inline fun <reified T : Activity> Activity.launchActivity2(vararg sharedElements
     )
 }
 
-inline fun <reified T : Activity> Activity.launchActivity(vararg sharedElements: Pair<View, String>) {
-
-}
-
 inline fun <reified T : Activity> Activity.tohActivity(block: Intent.() -> Unit = {}) {
     startActivity(Intent(this, T::class.java).apply { block() })
     finish()
 }
 
-inline fun <reified T : Activity> Activity.tohActivity2(vararg sharedElements: Pair<View, String>) {
+inline fun <reified T : Activity> Activity.tohActivity(vararg sharedElements: Pair<View, String>) {
 
     ActivityCompat.startActivity(
         this,
