@@ -4,7 +4,7 @@ import android.view.View
 import androidx.core.util.Pair
 import com.chengwf.utils.Const
 import com.chengwf.utils.base.BaseDemoListActivity
-import com.chengwf.utils.ext.launchActivity2
+import com.chengwf.utils.ext.launchActivity
 
 class AnimatorDemoListActivity : BaseDemoListActivity() {
     override fun getAdapterList() =
@@ -19,8 +19,8 @@ class AnimatorDemoListActivity : BaseDemoListActivity() {
         )
         println("=======#position========$item===============")
         when (position) {
-            0 -> launchActivity2<DynamicAnimationActivity>(pair)
-            1 -> launchActivity2<BezierCurveDemoActivity>(pair)
+            0 -> launchActivity<DynamicAnimationActivity>(pair)
+            1 -> launchActivity<BezierCurveDemoActivity>(pair)
         }
 
     }

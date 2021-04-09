@@ -12,7 +12,7 @@ import com.chengwf.demo.viewchat.MoreChatActivity
 import com.chengwf.designviewdemo.DesignViewListActivity
 import com.chengwf.utils.Const
 import com.chengwf.utils.base.BaseDemoListActivity
-import com.chengwf.utils.ext.launchActivity2
+import com.chengwf.utils.ext.launchActivity
 
 class MainActivity : BaseDemoListActivity() {
 
@@ -27,15 +27,15 @@ class MainActivity : BaseDemoListActivity() {
             Const.TRANSITION_NAME_TITLE
         )
         when (position) {
-            0 -> launchActivity2<MoreChatActivity>(pair)
-            1 -> launchActivity2<TopSnackBarActivity>(pair)
-            2 -> launchActivity2<SpanSizeActivity>(pair)
-            3 -> launchActivity2<CustomDialogActivity>(pair)
-            4 -> launchActivity2<AnimatorDemoListActivity>(pair)
-            5 -> launchActivity2<LotteryPanListActivity>(pair)
-            6 -> launchActivity2<DemoListActivity>(pair)
-            7 -> launchActivity2<com.chengwf.recyclerviewdemo.DemoListActivity>(pair)
-            8 -> launchActivity2<DesignViewListActivity>(pair)
+            0 -> launchActivity<MoreChatActivity>(pair)
+            1 -> launchActivity<TopSnackBarActivity>(pair)
+            2 -> launchActivity<SpanSizeActivity>(pair)
+            3 -> launchActivity<CustomDialogActivity>(pair)
+            4 -> launchActivity<AnimatorDemoListActivity>(pair)
+            5 -> launchActivity<LotteryPanListActivity>(pair)
+            6 -> launchActivity<DemoListActivity>(pair)
+            7 -> launchActivity<com.chengwf.recyclerviewdemo.DemoListActivity>(pair)
+            8 -> launchActivity<DesignViewListActivity>(pair)
         }
     }
 }
